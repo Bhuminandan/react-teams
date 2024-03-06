@@ -1,17 +1,20 @@
 const express = require('express');
-const http = require('http');
+const https = require('https');
 const socketIO = require('socket.io');
 const cors = require('cors');
 const expressRoutes = require('./expressRoutes');
 const dbConnect = require('./db/dbConnect');
 const cookieParser = require("cookie-parser");
+const fs = require("fs");
 
+const key = fs.readFileSync("./certs/cert.key");
+const cert = fs.readFileSync("./certs/cert.crt");
 
 const app = express();
-const expressServer = http.createServer(app);
+const expressServer = https.createServer({key, cert} ,app);
 const io = socketIO(expressServer, {
   cors: {
-    origin: 'http://localhost:5173',
+    origin: 'https://localhost:5173',
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -25,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors(
   {
-    origin: 'http://localhost:5173',
+    origin: 'https://localhost:5173',
     credentials: true
   }
 ));

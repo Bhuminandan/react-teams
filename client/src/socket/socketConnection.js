@@ -6,7 +6,7 @@ const socketConnection = () => {
     if (socket && socket.connected) {
         return socket;
     } else {
-        socket = io.connect('http://localhost:9000', {
+        socket = io.connect('https://localhost:9000', {
             withCredentials: true
         });
 

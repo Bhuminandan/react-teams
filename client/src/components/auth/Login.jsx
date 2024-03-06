@@ -23,7 +23,7 @@ const Login = () => {
 
       try {
         const res = await axios.post(
-          'http://localhost:9000/login',
+          'https://localhost:9000/login',
           {
             email,
             password,

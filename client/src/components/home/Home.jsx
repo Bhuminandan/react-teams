@@ -17,7 +17,7 @@ const Home = () => {
   const isAuthenticatedCheck = useCallback(async () => {
     try {
       setAuthPending(true)
-      const response = await axios.get('http://localhost:9000/isAuthenticated', {
+      const response = await axios.get('https://localhost:9000/isAuthenticated', {
         withCredentials: true
       });
 

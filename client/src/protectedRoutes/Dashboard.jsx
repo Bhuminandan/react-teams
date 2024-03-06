@@ -17,7 +17,7 @@ const Dashboard = () => {
   
   const fetchAllUsers = useCallback( async () => {
     try {
-      const users = await axios.get('http://localhost:9000/users', {
+      const users = await axios.get('https://localhost:9000/users', {
         withCredentials: true
       })
       dispatch(allUsers(users.data))
